@@ -19,7 +19,7 @@ class TransactionList extends StatelessWidget {
           itemCount: transactions.length,
           itemBuilder: (context, index) {
             return Card(
-                color: CupertinoColors.systemGrey3,
+                color: CupertinoColors.systemGrey2,
                 margin: const EdgeInsets.symmetric(
                   vertical: 8,
                   horizontal: 5,

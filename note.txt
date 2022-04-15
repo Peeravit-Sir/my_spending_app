@@ -1,0 +1,1 @@
+Use ExpansionTiles for drop dwon in details page

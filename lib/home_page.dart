@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      backgroundColor: CupertinoColors.systemGrey2,
+      backgroundColor: CupertinoColors.systemGrey4,
       child: Column(
         children: [
           Padding(
