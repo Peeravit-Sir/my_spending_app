@@ -48,7 +48,7 @@ class TransactionList extends StatelessWidget {
                       DateFormat('d MMM, y').format(transactions[index].date)),
                   trailing: CupertinoButton(
                     onPressed: () {
-                      print('Delete');
+                      print('Delete me');
                     },
                     child: const Icon(CupertinoIcons.delete,
                         color: CupertinoColors.black),
