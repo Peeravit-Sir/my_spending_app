@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
 // import './details_page.dart';
@@ -17,7 +18,15 @@ class MyApp extends StatelessWidget {
     // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     //   statusBarColor: CupertinoColors.systemYellow,
     // ));
-    return const CupertinoApp(home: HomePage());
+    return const CupertinoApp(
+      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+      ],
+    );
   }
 }
 

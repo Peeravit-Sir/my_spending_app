@@ -6,11 +6,11 @@ import './models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTx;
 
-  const TransactionList({
-    Key? key,
-    required this.transactions,
-  }) : super(key: key);
+  const TransactionList(
+      {Key? key, required this.transactions, required this.deleteTx})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TransactionList extends StatelessWidget {
           itemCount: transactions.length,
           itemBuilder: (context, index) {
             return Card(
-                color: CupertinoColors.systemGrey2,
+                color: CupertinoColors.systemGrey5,
                 margin: const EdgeInsets.symmetric(
                   vertical: 8,
                   horizontal: 5,
@@ -27,13 +27,13 @@ class TransactionList extends StatelessWidget {
                 elevation: 5,
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: CupertinoColors.systemGrey,
+                    backgroundColor: CupertinoColors.systemGrey3,
                     radius: 30,
                     child: Padding(
                       padding: const EdgeInsets.all(6),
                       child: FittedBox(
                         child: Text(
-                          '\$${transactions[index].amount.toString()}',
+                          '\$${transactions[index].amount.toStringAsFixed(2)}',
                           style: const TextStyle(color: CupertinoColors.black),
                         ),
                       ),
@@ -48,7 +48,7 @@ class TransactionList extends StatelessWidget {
                       DateFormat('d MMM, y').format(transactions[index].date)),
                   trailing: CupertinoButton(
                     onPressed: () {
-                      print('Delete');
+                      deleteTx(transactions[index].id);
                     },
                     child: const Icon(CupertinoIcons.delete,
                         color: CupertinoColors.black),
