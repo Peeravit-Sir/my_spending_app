@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
-// import './details_page.dart';
+import './details_page.dart';
 // import './chart_page.dart';
 import './home_page.dart';
 
@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     // ));
     return const CupertinoApp(
       home: HomePage(),
+      // home: DetailsPage(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: <LocalizationsDelegate<dynamic>>[
         DefaultMaterialLocalizations.delegate,

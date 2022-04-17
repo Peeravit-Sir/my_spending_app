@@ -14,21 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Transaction> userTransactions = [
-    //   Transaction(
-    //     id: 't1',
-    //     title: 'shoes',
-    //     amount: 2000,
-    //     date: DateTime.now(),
-    //   ),
-    //   Transaction(
-    //     id: 't2',
-    //     title: 'food',
-    //     amount: 10,
-    //     date: DateTime.now(),
-    //   ),
   ];
 
-  List<Transaction> get recentTransactions {
+  List<Transaction> get weeklyTransactions {
     return userTransactions.where((tx) {
       return tx.date.isAfter(
         DateTime.now().subtract(
@@ -70,26 +58,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.systemGrey2,
+        backgroundColor: CupertinoColors.white,
         leading: CupertinoButton(
+          pressedOpacity: 0.5,
           padding: const EdgeInsets.only(bottom: 10),
           minSize: 20,
           onPressed: () {
-            print('PressLeft');
+            print('settings button');
           },
           child: const Icon(CupertinoIcons.gear_solid,
               size: 26, color: CupertinoColors.black),
         ),
-        // middle: Text(
-        //   'Spending Tracker',
-        //   style: TextStyle(fontSize: 23),
-        // ),
         trailing: CupertinoButton(
           minSize: 20,
           padding: const EdgeInsets.only(bottom: 10),
-          // pressedOpacity: 0.5,
-          // iconSize: 30,
-          // style: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          pressedOpacity: 0.5,
           onPressed: () {
             startNewTransaction(context);
           },
@@ -100,23 +83,24 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      backgroundColor: CupertinoColors.systemGrey4,
+      backgroundColor: const Color.fromARGB(247, 255, 255, 255),
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(20),
             child: Center(
-              child: Column(children: const [
-                Text(
+              child: Column(children: [
+                const Text(
                   'Total spending this week',
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 24),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '\$ 0.00',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  '\$${weeklyTransactions.map((e) => e.amount).fold<double>(0, (prev, amount) => prev + amount).toString()}',
+                  style: const TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ]),
             ),

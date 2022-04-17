@@ -16,6 +16,7 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+          reverse: true,
           itemCount: transactions.length,
           itemBuilder: (context, index) {
             return Card(
