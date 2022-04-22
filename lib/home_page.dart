@@ -13,8 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Transaction> userTransactions = [
-  ];
+  final List<Transaction> userTransactions = [];
 
   List<Transaction> get weeklyTransactions {
     return userTransactions.where((tx) {
@@ -98,7 +97,9 @@ class _HomePageState extends State<HomePage> {
                   height: 10,
                 ),
                 Text(
-                  '\$${weeklyTransactions.map((e) => e.amount).fold<double>(0, (prev, amount) => prev + amount).toString()}',
+                  weeklyTransactions.isEmpty == true
+                      ? '\$ 0.00'
+                      : '\$${weeklyTransactions.map((e) => e.amount).fold<double>(0, (prev, amount) => prev + amount).toStringAsFixed(2)}',
                   style: const TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),
                 ),
